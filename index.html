@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Suchane Bhandara</title>
+<title>Suchane</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 button,input,select,textarea{font:inherit}
@@ -168,7 +168,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--fg);min-height:100
 <header class="header">
   <div class="logo">
     <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="5" fill="currentColor"/><path d="M6 8h10M6 12h7M6 16h9" stroke="var(--bg)" stroke-width="1.6" stroke-linecap="round"/></svg>
-    Suchane Bhandara
+    Suchane
   </div>
   <div class="hdr-r">
     <span class="badge badge-outline" id="hdr-cnt" style="font-family:var(--mono)">0 prompts</span>
@@ -306,7 +306,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--fg);min-height:100
 
 <script>
 /* ══ STATE ══ */
-const SK='Suchane Bhandara_v2';
+const SK='Suchane_v2';
 let prompts=[],flt='all',view='grid',editId=null,viewId=null,etags=[];
 
 /* ══ PERSIST ══ */
@@ -325,7 +325,7 @@ function buildTxt(){
   ).join('\n\n'+'─'.repeat(60)+'\n\n');
 }
 function buildMd(){
-  return `# Suchane Bhandara Export\n_${new Date().toLocaleString()}_\n\n---\n\n`+
+  return `# Suchane Export\n_${new Date().toLocaleString()}_\n\n---\n\n`+
     prompts.map(p=>
       `## ${p.title}\n\n`+
       `**Category:** ${p.category} · **Tags:** ${(p.tags||[]).map(t=>`\`${t}\``).join(' ')||'—'} · **Favorite:** ${p.fav?'⭐ Yes':'No'}  \n`+
@@ -339,7 +339,7 @@ function exportFile(ext){
   const content=ext==='md'?buildMd():buildTxt();
   const ts=new Date().toISOString().slice(0,10);
   const blob=new Blob([content],{type:'text/plain'});
-  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:`Suchane Bhandara-${ts}.${ext}`});
+  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:`Suchane-${ts}.${ext}`});
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(a.href);
   toast(`Exported ${prompts.length} prompt${prompts.length!==1?'s':''} as .${ext}`,'✓');
 }
